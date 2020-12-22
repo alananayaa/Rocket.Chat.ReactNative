@@ -11,7 +11,7 @@ import * as types from '../actions/actionsTypes';
 import {
 	appStart, ROOT_SET_USERNAME, ROOT_INSIDE, ROOT_LOADING, ROOT_OUTSIDE
 } from '../actions/app';
-import { serverFinishAdd, selectServerRequest } from '../actions/server';
+import { serverFinishAdd, serverRequest } from '../actions/server';
 import {
 	loginFailure, loginSuccess, setUser, logout
 } from '../actions/login';
@@ -26,6 +26,7 @@ import { inviteLinksRequest } from '../actions/inviteLinks';
 import { showErrorAlert } from '../utils/info';
 import { localAuthenticate } from '../utils/localAuthentication';
 import { setActiveUsers } from '../actions/activeUsers';
+import appConfig from '../../app.json';
 import { encryptionInit, encryptionStop } from '../actions/encryption';
 import UserPreferences from '../lib/userPreferences';
 
@@ -236,34 +237,36 @@ const handleLogout = function* handleLogout({ forcedByServer }) {
 	if (server) {
 		try {
 			yield call(logoutCall, { server });
-
+			yield put(appStart({ root: ROOT_OUTSIDE }));
 			// if the user was logged out by the server
 			if (forcedByServer) {
-				yield put(appStart({ root: ROOT_OUTSIDE }));
-				showErrorAlert(I18n.t('Logged_out_by_server'), I18n.t('Oops'));
-				yield delay(300);
-				Navigation.navigate('NewServerView');
-				yield delay(300);
-				EventEmitter.emit('NewServer', { server });
+				
+				// showErrorAlert(I18n.t('Logged_out_by_server'), I18n.t('Oops'));
+				// yield delay(300);
+				// Navigation.navigate('NewServerView');
+				// yield delay(300);
+				// EventEmitter.emit('NewServer', { server });
+				yield put(serverRequest(appConfig.server));
 			} else {
-				const serversDB = database.servers;
-				// all servers
-				const serversCollection = serversDB.collections.get('servers');
-				const servers = yield serversCollection.query().fetch();
+				yield put(serverRequest(appConfig.server));
+				// const serversDB = database.servers;
+				// // all servers
+				// const serversCollection = serversDB.collections.get('servers');
+				// const servers = yield serversCollection.query().fetch();
 
-				// see if there're other logged in servers and selects first one
-				if (servers.length > 0) {
-					for (let i = 0; i < servers.length; i += 1) {
-						const newServer = servers[i].id;
-						const token = yield UserPreferences.getStringAsync(`${ RocketChat.TOKEN_KEY }-${ newServer }`);
-						if (token) {
-							yield put(selectServerRequest(newServer));
-							return;
-						}
-					}
-				}
-				// if there's no servers, go outside
-				yield put(appStart({ root: ROOT_OUTSIDE }));
+				// // see if there're other logged in servers and selects first one
+				// if (servers.length > 0) {
+				// 	for (let i = 0; i < servers.length; i += 1) {
+				// 		const newServer = servers[i].id;
+				// 		const token = yield UserPreferences.getStringAsync(`${ RocketChat.TOKEN_KEY }-${ newServer }`);
+				// 		if (token) {
+				// 			yield put(selectServerRequest(newServer));
+				// 			return;
+				// 		}
+				// 	}
+				// }
+				// // if there's no servers, go outside
+				// yield put(appStart({ root: ROOT_OUTSIDE }));
 			}
 		} catch (e) {
 			yield put(appStart({ root: ROOT_OUTSIDE }));
