@@ -155,12 +155,12 @@ class MessageBox extends Component {
 				title: I18n.t('Choose_file'),
 				icon: 'attach',
 				onPress: this.chooseFile
-			},
-			{
-				title: I18n.t('Create_Discussion'),
-				icon: 'discussions',
-				onPress: this.createDiscussion
 			}
+			// {
+			// 	title: I18n.t('Create_Discussion'),
+			// 	icon: 'discussions',
+			// 	onPress: this.createDiscussion
+			// }
 		];
 
 		const libPickerLabels = {

@@ -60,7 +60,7 @@ const Header = React.memo(({ room, thread, theme }) => {
 			icon = 'mention';
 		}
 	} else {
-		icon = 'channel-private';
+		icon = 'team';
 	}
 
 	const textColor = themes[theme].previewTintColor;

@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 
 class CreateChannelView extends React.Component {
 	static navigationOptions = () => ({
-		title: I18n.t('Create_Channel')
+		title: I18n.t('Create_Group')
 	});
 
 	static propTypes = {
@@ -330,10 +330,10 @@ class CreateChannelView extends React.Component {
 							<TextInput
 								autoFocus
 								style={[styles.input, { backgroundColor: themes[theme].backgroundColor }]}
-								label={I18n.t('Channel_Name')}
+								label={I18n.t('Group_Name')}
 								value={channelName}
 								onChangeText={this.onChangeText}
-								placeholder={I18n.t('Channel_Name')}
+								placeholder={I18n.t('Group_Name')}
 								returnKeyType='done'
 								testID='create-channel-name'
 								autoCorrect={false}
@@ -341,14 +341,14 @@ class CreateChannelView extends React.Component {
 								theme={theme}
 								underlineColorAndroid='transparent'
 							/>
-							{this.renderFormSeparator()}
+							{/* {this.renderFormSeparator()}
 							{this.renderType()}
 							{this.renderFormSeparator()}
 							{this.renderReadOnly()}
 							{this.renderFormSeparator()}
 							{this.renderEncrypted()}
 							{this.renderFormSeparator()}
-							{this.renderBroadcast()}
+							{this.renderBroadcast()} */}
 						</View>
 						<View style={styles.invitedHeader}>
 							<Text style={[styles.invitedTitle, { color: themes[theme].titleText }]}>{I18n.t('Invite')}</Text>

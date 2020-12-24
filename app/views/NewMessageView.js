@@ -189,12 +189,12 @@ class NewMessageView extends React.Component {
 				<View style={styles.buttonContainer}>
 					{this.renderButton({
 						onPress: this.createChannel,
-						title: I18n.t('Create_Channel'),
-						icon: 'channel-public',
+						title: I18n.t('Create_Group'),
+						icon: 'team',
 						testID: 'new-message-view-create-channel',
 						first: true
 					})}
-					{maxUsers > 2 ? this.renderButton({
+					{/* {maxUsers > 2 ? this.renderButton({
 						onPress: this.createGroupChat,
 						title: I18n.t('Create_Direct_Messages'),
 						icon: 'team',
@@ -205,7 +205,7 @@ class NewMessageView extends React.Component {
 						title: I18n.t('Create_Discussion'),
 						icon: 'discussions',
 						testID: 'new-message-view-create-discussion'
-					})}
+					})} */}
 				</View>
 			</View>
 		);

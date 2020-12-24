@@ -174,7 +174,7 @@ class LoginView extends React.Component {
 					theme={theme}
 					style={styles.loginButton}
 				/>
-				{Accounts_PasswordReset && (
+				{/* {Accounts_PasswordReset && (
 					<Button
 						title={I18n.t('Forgot_password')}
 						type='secondary'
@@ -184,8 +184,8 @@ class LoginView extends React.Component {
 						color={themes[theme].auxiliaryText}
 						fontSize={14}
 					/>
-				)}
-				{this.showRegistrationButton ? (
+				)} */}
+				{/* {this.showRegistrationButton ? (
 					<View style={styles.bottomContainer}>
 						<Text style={[styles.bottomContainerText, { color: themes[theme].auxiliaryText }]}>{I18n.t('Dont_Have_An_Account')}</Text>
 						<Text
@@ -195,7 +195,7 @@ class LoginView extends React.Component {
 						>{I18n.t('Create_account')}
 						</Text>
 					</View>
-				) : (<Text style={[styles.registerDisabled, { color: themes[theme].auxiliaryText }]}>{Accounts_RegistrationForm_LinkReplacementText}</Text>)}
+				) : (<Text style={[styles.registerDisabled, { color: themes[theme].auxiliaryText }]}>{Accounts_RegistrationForm_LinkReplacementText}</Text>)} */}
 			</>
 		);
 	}

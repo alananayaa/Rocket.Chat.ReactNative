@@ -44,7 +44,7 @@ const Icon = React.memo(({
 	} else if (type === 'd') {
 		icon = 'team';
 	} else {
-		icon = 'channel-private';
+		icon = 'team';
 	}
 	return (
 		<CustomIcon

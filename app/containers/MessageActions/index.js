@@ -285,13 +285,13 @@ const MessageActions = React.memo(forwardRef(({
 		let options = [];
 
 		// Reply
-		if (!isReadOnly) {
-			options = [{
-				title: I18n.t('Reply_in_Thread'),
-				icon: 'threads',
-				onPress: () => handleReply(message)
-			}];
-		}
+		// if (!isReadOnly) {
+		// 	options = [{
+		// 		title: I18n.t('Reply_in_Thread'),
+		// 		icon: 'threads',
+		// 		onPress: () => handleReply(message)
+		// 	}];
+		// }
 
 		// Quote
 		if (!isReadOnly) {
@@ -319,11 +319,11 @@ const MessageActions = React.memo(forwardRef(({
 		});
 
 		// Create Discussion
-		options.push({
-			title: I18n.t('Start_a_Discussion'),
-			icon: 'discussions',
-			onPress: () => handleCreateDiscussion(message)
-		});
+		// options.push({
+		// 	title: I18n.t('Start_a_Discussion'),
+		// 	icon: 'discussions',
+		// 	onPress: () => handleCreateDiscussion(message)
+		// });
 
 		// Mark as unread
 		if (message.u && message.u._id !== user.id) {

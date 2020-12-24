@@ -20,7 +20,7 @@ const RoomTypeIcon = React.memo(({
 
 	const color = themes[theme].auxiliaryText;
 
-	let icon = 'channel-private';
+	let icon = 'team';
 	if (type === 'discussion') {
 		icon = 'discussions';
 	} else if (type === 'c') {
